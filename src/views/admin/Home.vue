@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-header class="homeHeader">
-      <div class="title">工客管理后台|<el-button type="primary" icon="el-icon-s-platform">聊天室</el-button></div>
+      <div class="title">工客管理后台|<el-button type="primary" icon="el-icon-s-platform" @click="chat()">聊天室</el-button></div>
       <div>
         <el-dropdown class="choices" @command="commandHandler">
         <span class="el-dropdown-link">
@@ -61,6 +61,10 @@
     methods:{
       test(){
         this.$router.push("/userinfo")
+      },
+      chat(){
+        let path=this.$route.query.redirect;
+        this.$router.replace((path=='/'||path==undefined)?"/chatroom":path);
       },
       commandHandler(cmd){
         //注销登录操作

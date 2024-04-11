@@ -54,6 +54,7 @@
                 //保存当前用户到vuex
                 this.$store.state.currentUser=resp.data;
                 //保存登录用户到sessionStorage中
+                window.localStorage.removeItem("user");
                 window.localStorage.setItem("user",JSON.stringify(resp.data));
                 this.$router.replace("/home");
               }
